@@ -15,7 +15,7 @@ export const PlaylistModal = () => {
         dispatch({ type: "SELECTED_PLAYLIST", value: { playlistName: playlist, video: state.playVideo } });
     }
     const PlaylistNameList=()=>{
-       return <><li key="0" className="stacked-list-item">Save to.. <button className="badges" onClick={() =>{setShowNewPlayListInput(false); dispatch({ type: "PLAYLIST_OPTIONS" })}}>x</button></li>
+       return <><li key="0" className="stacked-list-item">Save to.. <button className="badges" onClick={() =>{setnewPlaylistText("");setShowNewPlayListInput(false); dispatch({ type: "PLAYLIST_OPTIONS" })}}>x</button></li>
        {PLAYLIST_NAMES.map((playlist, index) => {
             return <li key={index + 1} className="stacked-list-item">
                 <input className="btn-toast-1" type="checkbox" checked={state.playVideo.playlists.find(playlst => playlst === playlist) === undefined ? false : true} onClick={() => {
@@ -51,7 +51,6 @@ export const PlaylistModal = () => {
                     <ul className="stacked-lists" >
                         
                         <PlaylistNameList />
-                        <AddNewPlaylist key={"123"}/>
                         {AddNewPlaylist()}
                         
                         
