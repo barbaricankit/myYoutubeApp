@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { usePlaylist } from "../playlist-context"
 
 export const NavigationBar=()=>{
-    const {state,dispatch}=usePlaylist();
+    const {state}=usePlaylist();
     const PLAYLIST_NAMES = Object.keys(state.playLists)
     return<>
     <div>

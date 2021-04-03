@@ -1,4 +1,3 @@
-import { usePlaylist } from "./playlist-context";
 import "./App.css";
 import { VideoListing } from "./Components/VideoListing";
 import { VideoPage } from "./Components/VideoPage";
@@ -8,7 +7,6 @@ import { WatchLater } from "./Components/WatchLater";
 import {Routes,Route} from "react-router-dom";
 import { History } from "./Components/History";
 export default function App() {
-  const { state } = usePlaylist();
   return (
     <div className="App">
       <NavigationBar />
