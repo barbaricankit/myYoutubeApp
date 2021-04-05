@@ -1,45 +1,43 @@
 @import "https://fluidcss.netlify.app/styles.css";
 
-.btn-text{
+.btn-text {
   font-size: larger;
 }
 .stacked-list-item:first-child {
   border-bottom: 0.1rem solid var(--stacked-list-border-color);
   position: relative;
 }
-.search-box{
-  width:40rem;
-  height:2rem;
+.search-box {
+  width: 40rem;
+  height: 2rem;
   border-radius: 9999px;
-  margin-left:6rem;
+  margin-left: 6rem;
+}
+.logo-text {
+  padding: 0.5rem 0 0.5rem 0;
+}
+::placeholder {
+  padding-left: 1rem;
+}
+@media only screen and (max-width: 1200px) {
+  .search-box {
+    width: 25rem;
+    height: 2rem;
+    border-radius: 9999px;
+    margin-left: 1rem;
   }
-  .logo-text{
-    padding: 0.5rem 0 0.5rem 0;
-  }
-  ::placeholder{
-    padding-left: 1rem;
-  }
-  @media only screen and (max-width:1200px){
-    .search-box{
-      width:25rem;
-      height:2rem;
-      border-radius: 9999px;
-      margin-left:1rem;
-      }
-  }
-@media only screen and (max-width:600px){
-  
-  .logo-txt{
+}
+@media only screen and (max-width: 600px) {
+  .logo-txt {
     display: none;
   }
-  .video-height{
-    height:10rem;
+  .video-height {
+    height: 10rem;
   }
-  .search-box{
-    width:10rem;
-    height:2rem;
+  .search-box {
+    width: 10rem;
+    height: 2rem;
     border-radius: 9999px;
-    margin-left:1rem;
-    }
+    margin-left: 1rem;
+  }
 }
-
