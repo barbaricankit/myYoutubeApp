@@ -6,6 +6,7 @@ import { PlayList } from "./Components/PlayList";
 import { WatchLater } from "./Components/WatchLater";
 import {Routes,Route} from "react-router-dom";
 import { History } from "./Components/History";
+import { Library } from "./Components/Library";
 export default function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/playlist/:playlistname" element={<PlayList />} />
         <Route path="/watch-later" element={<WatchLater />} />
         <Route path="/history" element={<History />} />
+        <Route path="/library" element={<Library/>}/>
       </Routes>
       </div>
       

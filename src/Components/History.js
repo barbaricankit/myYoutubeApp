@@ -1,27 +1,30 @@
-import { usePlaylist } from "../playlist-context"
+import { usePlaylist } from "../video-context";
 import { faTrash, faThumbsUp, faThumbsDown, faShare } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 export const History=()=>{
     const {state,dispatch}=usePlaylist();
     const [showModal, setShowModal] = useState(false);
-    console.log(state.history)
-    const RemovePlaylistModal = ({ video }) =>
-
-        <div className="modal">
-            <h2 className="modal-title">Remove Video from playlist
-		    <button className="close-modal" onClick={() => setShowModal(false)}>x</button>
-            </h2>
+    const RemovePlaylistModal = ( video ) =>
+     
+    <div className="modal" style={{position:"fixed",zIndex:"1" }}>
+    <div class="modal-header">
+    <h3 className="modal-title">Remove Video from playlist </h3>
+    <button className="close-modal" onClick={() => setShowModal(false)}>x</button>
+   
+    </div>
             <p className="modal-txt">Are you sure you want to delete the video from the history?</p>
             <div className="btn-modal">
                 <button className="btn-text" onClick={() => setShowModal(false)} ><span className="h6">Cancel</span></button>
                 <button className="btn-primary" onClick={() => {
                     setShowModal(false);
+                    console.log("Line no. 21 "+video)
                     dispatch({ type: "REMOVE_VIDEO_FROM_HISTORY", value: video });} }>Remove</button>
             </div>
         </div>
     return <>
             <div>
+            <div className="heading h1">History</div>
                 {
                     state.history.map(video=><div className="card horizontal-card-with-text" style={{ margin: "1rem" }} >
                     <img className="horizontal-card-img" src={video.snippet.thumbnails.medium.url} alt={video.title} />
@@ -41,9 +44,11 @@ export const History=()=>{
 
                         </div>
                     </div>
-                    {showModal && <RemovePlaylistModal video={video} />}
+                    {console.log({video})}
+                    {showModal && RemovePlaylistModal(video) }
                 </div>)
                 }
+                {state.history.length===0 && <div className="h4" style={{margin:"4rem"}}>There is no records</div>}
             </div>
     </>
 }

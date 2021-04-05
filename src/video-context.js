@@ -17,7 +17,9 @@ export const PlayListProvider = ({ children }) => {
         case "ADD_VIDEO_TO_HISTORY":
           return {...state,history:[action.value,...state.history.filter(video=>video.id!==action.value.id)]}
       case "REMOVE_VIDEO_FROM_HISTORY":
-        return {...state,history:state.history.filter(video=>video.id!==action.value.video.id)}
+        return {...state,history:state.history.filter(video=>video.id!==action.value.id)}
+        case "REMOVE_VIDEO_FROM_WATCH_LATER":
+          return {...state,watchlater:state.watchlater.filter(video=>video.id!==action.value.id)}
       case "PLAYLIST_OPTIONS":
         return { ...state, showPlayListOptions: !state.showPlayListOptions };
       case "ADD_TO_WATCH_LATER":

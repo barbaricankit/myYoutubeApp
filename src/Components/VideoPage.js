@@ -1,9 +1,10 @@
+import "../App.css";
 import { faComment, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
-import { usePlaylist } from "../playlist-context";
+import { usePlaylist } from "../video-context";
 import { PlaylistModal } from "./PlaylistModal";
 
 export const VideoPage = () => {
@@ -15,7 +16,7 @@ export const VideoPage = () => {
   console.log(state.videolist,videoId)
   const opts = {
     height: video.snippet.thumbnails.standard.height,
-    width: video.snippet.thumbnails.standard.width,
+    width: "100%",
     playerVars: {
       autoplay: 1
     }
@@ -24,10 +25,11 @@ export const VideoPage = () => {
     setShowToast(showToast=>showToast+" show")
     setTimeout(()=>{
       setShowToast(showToast=>showToast.replace("show",""))
-    },2000)
+    },5000)
   }
   return (
-    <div >
+    <div style={{marginTop:"4rem"}}>
+    <div className="video-height">
       <YouTube
         videoId={video.id}
         onPlay={()=>dispatch({type:"ADD_VIDEO_TO_HISTORY",value:video})}
@@ -35,15 +37,19 @@ export const VideoPage = () => {
        
       />
       <h1>{video.snippet.title}</h1>
-      <div style={{display:"flex",justifyContent:"space-between"}}>
-      <span>{video.statistics.viewCount} views . </span>
-      <span>Uploaded on {video.snippet.publishedAt} </span>
-      <span> <FontAwesomeIcon icon={faThumbsUp} size="1x" style={{color:"blue"}}/> {video.statistics.likeCount} </span>
-      <span><FontAwesomeIcon icon={faThumbsDown} /> {video.statistics.dislikeCount} </span>
-      <span><FontAwesomeIcon icon={faComment} /> {video.statistics.commentCount} </span>
+      <div style={{display:"flex"}}>
+      <div style={{display:"flex",justifyContent:"space-around"}}>
+      <div>{video.statistics.viewCount} views | </div>
+      <div> Uploaded on {video.snippet.publishedAt} </div>
+      </div>
+      <div style={{ display:"flex",justifyContent:"space-around"}}>
+      <div> <FontAwesomeIcon icon={faThumbsUp} size="1x" style={{color:"blue"}}/> {video.statistics.likeCount} </div>
+      <div><FontAwesomeIcon icon={faThumbsDown} /> {video.statistics.dislikeCount} </div>
+      <div><FontAwesomeIcon icon={faComment} /> {video.statistics.commentCount} </div>
      
       </div>
-      <div>
+      </div>
+      <div style={{paddingBottom:"3rem"}}>
         <button
         className="btn-primary"
           onClick={() => dispatch({type:"PLAYLIST_OPTIONS"})}
@@ -55,8 +61,10 @@ export const VideoPage = () => {
           </button>
           <PlaylistModal />
       </div>
+      
       {addToWatchLater && <div className={showToast}>Added to Watch Later</div>}
       {!addToWatchLater && <div className={showToast}>Removed from Watch Later</div>}
+      </div>
     </div>
   );
 };

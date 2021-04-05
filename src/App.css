@@ -7,3 +7,30 @@
   border-bottom: 0.1rem solid var(--stacked-list-border-color);
   position: relative;
 }
+.search-box{
+  width:20rem;
+  height:2rem;
+  border-radius: 9999px;
+  margin-left:1rem;
+  }
+@media only screen and (max-width:600px){
+  .logo{
+    margin-left:0.5rem;
+  }
+  .logo-text{
+    display: none;
+  }
+  .video-height{
+    height:10rem;
+  }
+  .search-box{
+    width:12rem;
+    height:2rem;
+    border-radius: 9999px;
+    margin-left:1rem;
+    }
+    ::placeholder{
+      padding-left: 1rem;
+    }
+}
+
