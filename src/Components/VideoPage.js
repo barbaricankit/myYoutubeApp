@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import YouTube from "react-youtube";
 import { usePlaylist } from "../video-context";
 import { PlaylistModal } from "./PlaylistModal";
+import { VideoListing } from "./VideoListing";
 
 export const VideoPage = () => {
   const { state, dispatch } = usePlaylist();
@@ -39,8 +40,8 @@ export const VideoPage = () => {
       <h1>{video.snippet.title}</h1>
       <div style={{display:"flex"}}>
       <div style={{display:"flex",justifyContent:"space-around"}}>
-      <div>{video.statistics.viewCount} views | </div>
-      <div> Uploaded on {video.snippet.publishedAt} </div>
+      <div>{Math.round(video.statistics.viewCount/1000)}K views | </div>
+      <div> Uploaded on April {video.snippet.publishedAt.substring(0,4)} </div>
       </div>
       <div style={{ display:"flex",justifyContent:"space-around"}}>
       <div> <FontAwesomeIcon icon={faThumbsUp} size="1x" style={{color:"blue"}}/> {video.statistics.likeCount} </div>
@@ -49,7 +50,7 @@ export const VideoPage = () => {
      
       </div>
       </div>
-      <div style={{paddingBottom:"3rem"}}>
+      <div>
         <button
         className="btn-primary"
           onClick={() => dispatch({type:"PLAYLIST_OPTIONS"})}
@@ -65,6 +66,8 @@ export const VideoPage = () => {
       {addToWatchLater && <div className={showToast}>Added to Watch Later</div>}
       {!addToWatchLater && <div className={showToast}>Removed from Watch Later</div>}
       </div>
+      <VideoListing />
     </div>
+   
   );
 };

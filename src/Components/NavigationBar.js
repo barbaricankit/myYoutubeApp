@@ -12,8 +12,7 @@ export const NavigationBar=()=>{
     <ul className="horizontal-nav-bar fixed-horizontal-bar">
         <div>
             <li className="navigation-option-horizontal navigation-option navigation-top">
-                <FontAwesomeIcon icon={faPlay} className="logo" />
-                <a href="#home" className="logo-text">cricVideo</a>
+                <span className="logo-text"><FontAwesomeIcon icon={faPlay} className="logo" /><span className="logo-txt"> cricVideo</span> </span>
             </li>
             <li className="navigation-option-horizontal navigation-option navigation-top"><input type="search" placeholder="Search for any video" className="search-box"/></li>
             </div>

@@ -8,29 +8,38 @@
   position: relative;
 }
 .search-box{
-  width:20rem;
+  width:40rem;
   height:2rem;
   border-radius: 9999px;
-  margin-left:1rem;
-  }
-@media only screen and (max-width:600px){
-  .logo{
-    margin-left:0.5rem;
+  margin-left:6rem;
   }
   .logo-text{
+    padding: 0.5rem 0 0.5rem 0;
+  }
+  ::placeholder{
+    padding-left: 1rem;
+  }
+  @media only screen and (max-width:1200px){
+    .search-box{
+      width:25rem;
+      height:2rem;
+      border-radius: 9999px;
+      margin-left:1rem;
+      }
+  }
+@media only screen and (max-width:600px){
+  
+  .logo-txt{
     display: none;
   }
   .video-height{
     height:10rem;
   }
   .search-box{
-    width:12rem;
+    width:10rem;
     height:2rem;
     border-radius: 9999px;
     margin-left:1rem;
-    }
-    ::placeholder{
-      padding-left: 1rem;
     }
 }
 
