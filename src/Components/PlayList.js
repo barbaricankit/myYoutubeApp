@@ -1,7 +1,7 @@
 import { faTrash, faThumbsUp, faThumbsDown, faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { usePlaylist } from "../video-context";
 
 export const PlayList = ({playlist}) => {
@@ -29,12 +29,12 @@ export const PlayList = ({playlist}) => {
         <div >
         <div className="heading h1">{playlistname===undefined?playlist:playlistname}</div>
             {state.playLists[playlistname===undefined?playlist:playlistname].length === 0 ? <div className="h4" style={{margin:"4rem"}}>Add your favourite Videos into the {playlistname===undefined?playlist:playlistname} playlist</div> : <div className="h2">{playlistname}</div>}
-            <div style={{ margin: "1rem" }}>
+            <div style={{ marginTop:"3rem" }}>
                 {
 
                     state.playLists[playlistname===undefined?playlist:playlistname].map(video =>
                     (<div className="card horizontal-card-with-text" style={{ margin: "1rem" }} >
-                        <img className="horizontal-card-img" src={video.snippet.thumbnails.medium.url} alt={video.title} />
+                     <Link to={`/video/${video.id}`}><img className="horizontal-card-img" src={video.snippet.thumbnails.medium.url} alt={video.title} /></Link>  
                         <div className="card-details" style={{ display: "flex", flexDirection: "column" }}>
                             <div className="h5 product-details" style={{ flexGrow: "1" }}>{video.snippet.title}</div>
                             <div>

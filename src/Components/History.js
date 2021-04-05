@@ -2,6 +2,7 @@ import { usePlaylist } from "../video-context";
 import { faTrash, faThumbsUp, faThumbsDown, faShare } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
+import { Link } from "react-router-dom";
 export const History=()=>{
     const {state,dispatch}=usePlaylist();
     const [showModal, setShowModal] = useState(false);
@@ -26,8 +27,8 @@ export const History=()=>{
             <div>
             <div className="heading h1">History</div>
                 {
-                    state.history.map(video=><div className="card horizontal-card-with-text" style={{ margin: "1rem" }} >
-                    <img className="horizontal-card-img" src={video.snippet.thumbnails.medium.url} alt={video.title} />
+                    state.history.map(video=><div className="card horizontal-card-with-text" style={{ margin: "1rem",marginTop:"5rem" }} >
+                     <Link to={`/video/${video.id}`}><img className="horizontal-card-img" src={video.snippet.thumbnails.medium.url} alt={video.title} /></Link>
                     <div className="card-details" style={{ display: "flex", flexDirection: "column" }}>
                         <div className="h5 product-details" style={{ flexGrow: "1" }}>{video.snippet.title}</div>
                         <div>

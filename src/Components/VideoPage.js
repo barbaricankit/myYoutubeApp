@@ -50,7 +50,7 @@ export const VideoPage = () => {
      
       </div>
       </div>
-      <div>
+      <div style={{paddingBottom:"3rem"}}>
         <button
         className="btn-primary"
           onClick={() => dispatch({type:"PLAYLIST_OPTIONS"})}
@@ -66,7 +66,7 @@ export const VideoPage = () => {
       {addToWatchLater && <div className={showToast}>Added to Watch Later</div>}
       {!addToWatchLater && <div className={showToast}>Removed from Watch Later</div>}
       </div>
-      <VideoListing />
+     
     </div>
    
   );
