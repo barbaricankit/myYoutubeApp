@@ -1,7 +1,7 @@
 import { usePlaylist } from "../video-context";
 import { History } from "./History";
 import PlayList from "./PlayList";
-import VerticalNavBar from "./VerticalNavBar";
+
 import { WatchLater } from "./WatchLater";
 
 const Library = () => {

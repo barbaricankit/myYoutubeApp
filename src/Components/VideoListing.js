@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { usePlaylist } from "../video-context";
-import VerticalNavBar from "./VerticalNavBar";
+
 import VideoCardDetails from "./VideoCardDetails";
 import VideoImage from "./VideoImage";
 export const VideoListing = () => {
