@@ -39,7 +39,7 @@ export const History = () => {
     </div>
   );
   return (
-    <>
+    <div className='content'>
       <div>
         <div className='heading h1'>History</div>
         {state.history.map((video) => (
@@ -92,6 +92,6 @@ export const History = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };

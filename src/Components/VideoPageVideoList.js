@@ -1,13 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { usePlaylist } from "../video-context";
-import VerticalNavBar from "./VerticalNavBar";
 import VideoCardDetails from "./VideoCardDetails";
 import VideoImage from "./VideoImage";
-export const VideoListing = () => {
+const VideoPageVideoList = () => {
   const { state, dispatch } = usePlaylist();
 
   return (
-    <div className='content'>
+    <>
       <div className='cards'>
         {state.videolist.map((video) => (
           <NavLink
@@ -16,7 +15,9 @@ export const VideoListing = () => {
             onClick={() => {
               dispatch({ type: "PLAYVIDEO", value: video });
             }}>
-            <div key={video.id} className='card card-with-text card-text'>
+            <div
+              key={video.id}
+              className='card horizontal-card-with-text card-text'>
               <VideoImage video={video} />
 
               <VideoCardDetails video={video} />
@@ -24,6 +25,8 @@ export const VideoListing = () => {
           </NavLink>
         ))}
       </div>
-    </div>
+    </>
   );
 };
+
+export default VideoPageVideoList;

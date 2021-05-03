@@ -39,7 +39,7 @@ export const WatchLater = () => {
     </div>
   );
   return (
-    <>
+    <div className='content'>
       <div>
         <div className='heading h1'>Watch Later</div>
 
@@ -101,6 +101,6 @@ export const WatchLater = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };

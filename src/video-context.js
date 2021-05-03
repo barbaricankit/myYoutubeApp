@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+} from "react";
 import { useData } from "./database-context";
 const PlayListContext = createContext();
 
@@ -10,6 +16,8 @@ export const PlayListProvider = ({ children }) => {
   }, [videos]);
   const managePlaylistReducer = (state, action) => {
     switch (action.type) {
+      case "SHOW_NAV":
+        return { ...state, showNav: !state.showNav };
       case "SETVIDEOLIST":
         return { ...state, videolist: action.value };
       case "PLAYVIDEO":
@@ -125,10 +133,11 @@ export const PlayListProvider = ({ children }) => {
     watchlater: [],
     showPlayListOptions: false,
     navPlaylistSelection: null,
+    showNav: false,
   });
-
+  const navbar = useRef(null);
   return (
-    <PlayListContext.Provider value={{ state, dispatch }}>
+    <PlayListContext.Provider value={{ state, dispatch, navbar }}>
       {children}
     </PlayListContext.Provider>
   );

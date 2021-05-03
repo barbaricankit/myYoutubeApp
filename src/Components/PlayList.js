@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { usePlaylist } from "../video-context";
 
-export const PlayList = ({ playlist }) => {
+const PlayList = ({ playlist }) => {
   const { state, dispatch } = usePlaylist();
   const [showModal, setShowModal] = useState(false);
   const { playlistname } = useParams();
@@ -43,7 +43,7 @@ export const PlayList = ({ playlist }) => {
     </div>
   );
   return (
-    <>
+    <div className='content'>
       <div>
         <div className='heading h1'>
           {playlistname === undefined ? playlist : playlistname}
@@ -115,6 +115,8 @@ export const PlayList = ({ playlist }) => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
+
+export default PlayList;
