@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
-import { usePlaylist } from "../video-context";
-import VideoCardDetails from "./VideoCardDetails";
-import VideoImage from "./VideoImage";
+import { usePlaylist } from "../../context/video-context";
+import VideoCardDetails from "../VideoListing/VideoCardDetails";
+import VideoImage from "../VideoListing/VideoImage";
 const VideoPageVideoList = () => {
-  const { state, dispatch } = usePlaylist();
+  const { dispatch, filteredVideos } = usePlaylist();
 
   return (
     <>
       <div className='cards'>
-        {state.videolist.map((video) => (
+        {filteredVideos.map((video, index) => (
           <NavLink
             to={`/video/${video.id}`}
             className='video_link'
+            key={index}
             onClick={() => {
               dispatch({ type: "PLAYVIDEO", value: video });
             }}>

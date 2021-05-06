@@ -4,10 +4,11 @@ import {
   faHistory,
   faHome,
   faIndent,
+  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
-import { usePlaylist } from "../video-context";
+import { usePlaylist } from "../../context/video-context";
 
 const VerticalNavBar = () => {
   const { state, navbar, dispatch } = usePlaylist();
@@ -20,9 +21,8 @@ const VerticalNavBar = () => {
       <NavLink
         className='nav__item'
         end
-        activeStyle={{ color: "#10B981", fontWeight: "bold" }}
-        style={{ color: "black" }}
-        onClick={() => dispatch({ type: "SHOW_NAV" })}
+        activeStyle={{ fontWeight: "bold" }}
+        onClick={() => dispatch({ type: "CLOSE_NAV" })}
         to='/'>
         <div className='left-padding'>
           <FontAwesomeIcon icon={faHome} className='nav-icon' />
@@ -31,9 +31,8 @@ const VerticalNavBar = () => {
       </NavLink>
       <NavLink
         className='nav__item'
-        activeStyle={{ color: "#10B981", fontWeight: "bold" }}
-        style={{ color: "black" }}
-        onClick={() => dispatch({ type: "SHOW_NAV" })}
+        activeStyle={{ fontWeight: "bold" }}
+        onClick={() => dispatch({ type: "CLOSE_NAV" })}
         to='/library'>
         <div className='left-padding'>
           <FontAwesomeIcon icon={faBook} className='nav-icon' />
@@ -42,9 +41,8 @@ const VerticalNavBar = () => {
       </NavLink>
       <NavLink
         className='nav__item'
-        activeStyle={{ color: "#10B981", fontWeight: "bold" }}
-        style={{ color: "black" }}
-        onClick={() => dispatch({ type: "SHOW_NAV" })}
+        activeStyle={{ fontWeight: "bold" }}
+        onClick={() => dispatch({ type: "CLOSE_NAV" })}
         to='/history'>
         <div className='left-padding'>
           <FontAwesomeIcon icon={faHistory} className='nav-icon' />
@@ -53,9 +51,18 @@ const VerticalNavBar = () => {
       </NavLink>
       <NavLink
         className='nav__item'
-        activeStyle={{ color: "#10B981", fontWeight: "bold" }}
-        style={{ color: "black" }}
-        onClick={() => dispatch({ type: "SHOW_NAV" })}
+        activeStyle={{ fontWeight: "bold" }}
+        onClick={() => dispatch({ type: "CLOSE_NAV" })}
+        to='/liked-videos'>
+        <div className='left-padding'>
+          <FontAwesomeIcon icon={faThumbsUp} className='nav-icon' />
+          <span className='nav-name'> Liked Videos</span>
+        </div>
+      </NavLink>
+      <NavLink
+        className='nav__item'
+        activeStyle={{ fontWeight: "bold" }}
+        onClick={() => dispatch({ type: "CLOSE_NAV" })}
         to='/watch-later'>
         <div className='left-padding'>
           <FontAwesomeIcon icon={faClock} className='nav-icon' />
@@ -64,12 +71,12 @@ const VerticalNavBar = () => {
       </NavLink>
       {PLAYLIST_NAMES.map((playlistname, index) => (
         <NavLink
+          key={index}
           className='nav__item'
-          activeStyle={{ color: "#10B981", fontWeight: "bold" }}
-          style={{ color: "black" }}
-          onClick={() => dispatch({ type: "SHOW_NAV" })}
+          activeStyle={{ fontWeight: "bold" }}
+          onClick={() => dispatch({ type: "CLOSE_NAV" })}
           to={{ pathname: `/playlist/${playlistname}` }}>
-          <div className='left-padding' key={index}>
+          <div className='left-padding'>
             <FontAwesomeIcon icon={faIndent} className='nav-icon' />
             <span className='nav-name'>{playlistname}</span>
           </div>

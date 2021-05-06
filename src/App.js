@@ -1,18 +1,19 @@
 import "./App.css";
-import { VideoListing } from "./Components/VideoListing";
-import VideoPage from "./Components/VideoPage";
-import NavigationBar from "./Components/NavigationBar";
-import PlayList from "./Components/PlayList";
-import { WatchLater } from "./Components/WatchLater";
+import { VideoListing } from "./Components/VideoListing/VideoListing";
+import VideoPage from "./Components/VideoPage/VideoPage";
+import Header from "./Components/Header/Header";
 import { Routes, Route } from "react-router-dom";
-import { History } from "./Components/History";
-import Library from "./Components/Library";
-import VerticalNavBar from "./Components/VerticalNavBar";
+import Library from "./Components/Library/Library";
+import VerticalNavBar from "./Components/Navigation/VerticalNavBar";
+import LikedVideos from "./Components/Library/LikedVideos/LikedVideos";
+import WatchLaterPage from "./Components/Library/WatchLater/WatchLaterPage";
+import PlayListPage from "./Components/Library/PlayList/PlayListPage";
+import HistoryPage from "./Components/Library/History/HistoryPage";
 
 export default function App() {
   return (
     <div className='App'>
-      <NavigationBar />
+      <Header />
 
       <Routes>
         <Route path='/'>
@@ -25,19 +26,25 @@ export default function App() {
         <Route path='/playlist/:playlistname'>
           <div className='main-content'>
             <VerticalNavBar />
-            <PlayList />
+            <PlayListPage />
+          </div>
+        </Route>
+        <Route path='/liked-videos'>
+          <div className='main-content'>
+            <VerticalNavBar />
+            <LikedVideos />
           </div>
         </Route>
         <Route path='/watch-later'>
           <div className='main-content'>
             <VerticalNavBar />
-            <WatchLater />
+            <WatchLaterPage />
           </div>
         </Route>
         <Route path='/history'>
           <div className='main-content'>
             <VerticalNavBar />
-            <History />
+            <HistoryPage />
           </div>
         </Route>
         <Route path='/library'>
