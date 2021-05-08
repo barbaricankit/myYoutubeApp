@@ -26,7 +26,7 @@ const PlayListContent = ({ playlist }) => {
       {state.playLists[playlistname === undefined ? playlist : playlistname]
         .length === 0 && (
         <div className='h4 empty-playlist'>
-          Add your favourite Videos into the{" "}
+          Add your favourite Videos into the
           {playlistname === undefined ? playlist : playlistname} playlist
         </div>
       )}

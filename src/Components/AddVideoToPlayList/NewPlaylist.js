@@ -37,7 +37,7 @@ const AddNewPlaylist = ({ video }) => {
             value: true,
           })
         }>
-        <FontAwesomeIcon icon={faPlus} />{" "}
+        <FontAwesomeIcon icon={faPlus} />
         <span className='playlist_name'>Create New Playlist</span>
       </div>
     );

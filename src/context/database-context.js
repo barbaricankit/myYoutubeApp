@@ -1,11 +1,12 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-
+const dotenv = require("dotenv");
+dotenv.config();
 const DataContext = createContext();
+console.log(process.env.REACT_APP_URL);
 const options = {
   method: "GET",
-  url:
-    "https://www.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&chart=mostPopular&key=AIzaSyBaKOviqO4JBR2O4f5MSze0v-DijMGSEUw&maxResults=50",
+  url: process.env.REACT_APP_URL,
 };
 export const DataProvider = ({ children }) => {
   const [videoList, setVideoList] = useState([]);

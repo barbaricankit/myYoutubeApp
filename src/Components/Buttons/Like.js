@@ -10,7 +10,6 @@ const LikeButton = ({ video }) => {
     <div
       className='stat'
       onClick={() => dispatch({ type: "LIKED_VIDEO", video })}>
-      {" "}
       <FontAwesomeIcon
         className={`stat-icon ${video.liked ? "selected-stat-icon" : ""}`}
         icon={faThumbsUp}
