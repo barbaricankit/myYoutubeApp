@@ -5,7 +5,7 @@ import { usePlaylistModal } from "../../context/playlist-context";
 const AddToWatchLater = ({ video }) => {
   const { dispatch } = usePlaylist();
   const { modalDispatch, manageToast } = usePlaylistModal();
-  console.log(video);
+
   return (
     <>
       <div

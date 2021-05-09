@@ -14,7 +14,6 @@ export const manageModalState = (state, action) => {
         video: action.video,
       };
     case "ADD_TO_PLAYLIST":
-      console.log(state);
       return {
         ...state,
         addtoPlaylist: action.value.flag,

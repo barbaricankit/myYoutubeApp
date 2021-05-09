@@ -18,7 +18,6 @@ export const filterHistoryVideo = (state, video) => {
   return state.history.filter((history_video) => history_video.id !== video.id);
 };
 export const filterWatchlaterVideo = (state, video) => {
-  console.log(state, video);
   return state.watchlater.filter(
     (watchlater_video) => watchlater_video.id !== video.id
   );
