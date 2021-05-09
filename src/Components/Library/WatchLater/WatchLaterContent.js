@@ -17,6 +17,7 @@ const WatchLaterContent = () => {
       {state.watchlater.length > 0 &&
         state.watchlater.map((video, index) => (
           <div key={index} className='card horizontal-card-with-text card-text'>
+            {console.log(state.watchlater)}
             <CardImage video={video} />
             <div className='horizontal-card-details'>
               <h3 className='card-text-title'>{video.snippet.title}</h3>

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { PlayListProvider } from "./context/video-context";
 import PlayListModalProvider from "./context/playlist-context";
 import { DataProvider } from "./context/database-context";
@@ -21,5 +20,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-reportWebVitals();

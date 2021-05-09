@@ -10,11 +10,11 @@ const PlaylistNameList = ({ video }) => {
       vid.id === video.id
         ? {
             ...vid,
-            playlists:
-              vid.playlists.find((playlist) => playListName === playlist) ===
-              undefined
-                ? [...vid.playlists, playListName]
-                : vid.playlists.filter((playlist) => playlist !== playListName),
+            playlists: !vid.playlists.find(
+              (playlist) => playListName === playlist
+            )
+              ? [...vid.playlists, playListName]
+              : vid.playlists.filter((playlist) => playlist !== playListName),
           }
         : vid
     );
@@ -33,7 +33,7 @@ const PlaylistNameList = ({ video }) => {
     });
   };
   const isPlaylistCheckboxChecked = (playlist) =>
-    video.playlists.find((playlst) => playlst === playlist) === undefined
+    video?.playlists.find((playlst) => playlst === playlist) === undefined
       ? false
       : true;
   return (
@@ -41,7 +41,7 @@ const PlaylistNameList = ({ video }) => {
       {PLAYLIST_NAMES.map((playlist, index) => {
         return (
           <div
-            key={index + 1}
+            key={index}
             className='playlist'
             onClick={() => {
               managePlaylistAndVideoList(playlist);
