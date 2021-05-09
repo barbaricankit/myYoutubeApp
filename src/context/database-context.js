@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const dotenv = require("dotenv");
 dotenv.config();
 const DataContext = createContext();
-console.log(process.env.REACT_APP_URL);
+
 const options = {
   method: "GET",
   url: process.env.REACT_APP_URL,
