@@ -9,16 +9,23 @@ import SaveVideo from "../VideoPage/SaveVideo";
 import { useEffect } from "react";
 import ShowToast from "../AddVideoToPlayList/ShowToast";
 export const VideoListing = () => {
-  const { dispatch, filteredVideos } = usePlaylist();
+  const {
+    dispatch,
+    filteredVideos,
+    current_play_video: play_video,
+  } = usePlaylist();
   const {
     modalState: { playlistModal, video },
     modalDispatch,
   } = usePlaylistModal();
   useEffect(() => {
+    if (play_video) {
+      dispatch({ type: "REMOVE_PLAY_VIDEO" });
+    }
     return () => {
       modalDispatch({ type: "CLOSE_MODAL" });
     };
-  }, [dispatch, modalDispatch]);
+  }, [dispatch, modalDispatch, play_video]);
   return (
     <div className='content'>
       <div className='cards'>

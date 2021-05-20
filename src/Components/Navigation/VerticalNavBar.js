@@ -13,6 +13,7 @@ import { usePlaylist } from "../../context/video-context";
 const VerticalNavBar = () => {
   const { state, navbar, dispatch } = usePlaylist();
   const PLAYLIST = state.playLists;
+
   return (
     <div
       ref={navbar}
@@ -68,7 +69,7 @@ const VerticalNavBar = () => {
           <span className='nav-name'> Watch Later</span>
         </div>
       </NavLink>
-      {PLAYLIST.map(({ playlistName }, index) => (
+      {PLAYLIST?.map(({ playlistName }, index) => (
         <NavLink
           key={index}
           className='nav__item'

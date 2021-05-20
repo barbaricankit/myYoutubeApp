@@ -41,11 +41,12 @@ export const managePlaylistReducer = (state, action) => {
         dislikeVideos: dislikedVideos,
         history: historyVideos,
       };
-
+    case "REMOVE_PLAY_VIDEO":
+      return { ...state, playVideo: null };
     case "LOAD_PLAYLIST_DATA":
       return {
         ...state,
-        playLists: action.value,
+        playLists: [action.value],
       };
     case "LOAD_LIKED_VIDEOS_DATA":
       return {

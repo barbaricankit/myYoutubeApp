@@ -24,7 +24,7 @@ const PlayListContent = ({ playlist }) => {
 
   const current_playlist = playlistname ? playlistname : playlist.playlistName;
 
-  const PLAYLIST = state.playLists.find(
+  const PLAYLIST = state.playLists?.find(
     (play_list) => play_list.playlistName === current_playlist
   );
   useEffect(() => {
@@ -63,7 +63,7 @@ const PlayListContent = ({ playlist }) => {
               className='card horizontal-card-with-text card-text'>
               <CardImage video={video} />
               <div className='horizontal-card-details'>
-                <div className='card-text-title'>{video.title}</div>
+                <div className='card-text-title'>{video?.title}</div>
                 <div className='stats'>
                   <LikeButton video={video} />
                   <DisLikeButton video={video} />

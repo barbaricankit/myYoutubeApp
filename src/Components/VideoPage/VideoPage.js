@@ -18,7 +18,6 @@ const VideoPage = () => {
       dispatch({ type: "PLAYVIDEO", value: videoId });
     }
     return () => {
-      dispatch({ type: "INITIAL_STATE" });
       modalDispatch({ type: "CLOSE_MODAL" });
     };
   }, [dispatch, modalDispatch, video, videoId]);

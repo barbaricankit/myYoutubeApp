@@ -72,7 +72,7 @@ const Header = () => {
             to='/'>
             <div className='logo-details'>
               <FontAwesomeIcon icon={faPlay} className='logo' />
-              <span className='logo-text'>CRICVideo</span>
+              <span className='logo-text'>CricVideo</span>
             </div>
           </NavLink>
         </div>
