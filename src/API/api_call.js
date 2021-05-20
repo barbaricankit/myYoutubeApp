@@ -2,9 +2,8 @@ import axios from "axios";
 const dotenv = require("dotenv");
 dotenv.config();
 const instance = axios.create({
-  baseURL: "https://cricvideoserver.herokuapp.com/",
+  baseURL: "process.env.REACT_APP_BASE_URL",
 });
-// process.env.REACT_APP_BASE_URL,
 export const callServer = async ({ url, type, body }) => {
   try {
     switch (type) {
