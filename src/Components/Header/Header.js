@@ -3,18 +3,40 @@ import {
   faChevronLeft,
   faPlay,
   faSearch,
+  faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 import { usePlaylist } from "../../context/video-context";
 
 const Header = () => {
   const { dispatch } = usePlaylist();
+  const {
+    authState: { login, userInitials },
+    authDispatch,
+  } = useAuth();
   const [searchText, setSearchText] = useState("");
   const [showSearchBox, setShowSearchBox] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const userRef = useRef(null);
   const menuBtn = useRef(null);
-
+  const navigate = useNavigate();
+  const logoutFunction = () => {
+    localStorage.removeItem("user_video_lib");
+    authDispatch({ type: "LOGOUT" });
+    dispatch({ type: "INITIAL_STATE" });
+    setShowOptions(false);
+    navigate("/");
+  };
+  useEffect(() => {
+    document.addEventListener("click", (e) => {
+      if (userRef.current && !userRef.current.contains(e.target)) {
+        setShowOptions(false);
+      }
+    });
+  });
   return (
     <header>
       <div className={`search_bar ${showSearchBox ? "show-search_bar" : ""}`}>
@@ -77,13 +99,35 @@ const Header = () => {
               onClick={() => setShowSearchBox((prevValue) => !prevValue)}
             />
           </div>
-          <span>
-            <img
-              className='avatar-sm nav-avatar'
-              src='https://scontent.fccu18-1.fna.fbcdn.net/v/t1.18169-9/24131585_1571374906276687_711347645622454609_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=174925&_nc_ohc=qYsIzSYAFNYAX8n-I26&_nc_ht=scontent.fccu18-1.fna&oh=a01b504ade77a7298f5b2dab96ed5f7a&oe=609CED38'
-              alt='userimage'
-            />
-          </span>
+
+          {login && (
+            <span
+              ref={userRef}
+              onClick={() => setShowOptions((prevValue) => !prevValue)}>
+              <span className='single-letter-avatar avatar-sm'>
+                {userInitials}
+              </span>
+            </span>
+          )}
+          {!login && (
+            <span onClick={() => navigate("/signin")}>
+              <FontAwesomeIcon icon={faSignInAlt} />
+            </span>
+          )}
+          {showOptions && (
+            <div className='user-menu'>
+              <div className='user-sub-menu'>
+                <div>Profile</div>
+              </div>
+              <div
+                className='user-sub-menu'
+                onClick={() => {
+                  logoutFunction();
+                }}>
+                <div>Logout</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>

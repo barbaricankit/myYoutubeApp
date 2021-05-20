@@ -9,6 +9,8 @@ import LikedVideos from "./Components/Library/LikedVideos/LikedVideos";
 import WatchLaterPage from "./Components/Library/WatchLater/WatchLaterPage";
 import PlayListPage from "./Components/Library/PlayList/PlayListPage";
 import HistoryPage from "./Components/Library/History/HistoryPage";
+import SignIn from "./Components/Login/SignIn";
+import SignUpPage from "./Components/Login/SignUp";
 
 export default function App() {
   return (
@@ -52,6 +54,12 @@ export default function App() {
             <VerticalNavBar />
             <Library />
           </div>
+        </Route>
+        <Route path='/signin'>
+          <SignIn />
+        </Route>
+        <Route path='/signup'>
+          <SignUpPage />
         </Route>
       </Routes>
     </div>

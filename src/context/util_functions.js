@@ -1,25 +1,25 @@
-export const findLikedVideo = (state, video) => {
-  return state.likedVideos.find((like_video) => like_video.id === video.id);
+export const findLikedVideo = (state, id) => {
+  return state.likedVideos.find((like_video_id) => like_video_id === id);
 };
-export const findDisLikeVideo = (state, video) => {
+export const findDisLikeVideo = (state, id) => {
   return state.dislikeVideos.find(
-    (dislike_video) => dislike_video.id === video.id
+    (dislike_video_id) => dislike_video_id === id
   );
 };
-export const filterLikedVideo = (state, video) => {
-  return state.likedVideos.filter((like_video) => like_video.id !== video.id);
+export const filterLikedVideo = (state, id) => {
+  return state.likedVideos.filter((like_video_id) => like_video_id !== id);
 };
-export const filterDisLikedVideo = (state, video) => {
+export const filterDisLikedVideo = (state, id) => {
   return state.likedVideos.filter(
-    (dislike_video) => dislike_video.id !== video.id
+    (dislike_video_id) => dislike_video_id !== id
   );
 };
-export const filterHistoryVideo = (state, video) => {
-  return state.history.filter((history_video) => history_video.id !== video.id);
+export const filterHistoryVideo = (state, id) => {
+  return state.history.filter((history_video_id) => history_video_id !== id);
 };
-export const filterWatchlaterVideo = (state, video) => {
+export const filterWatchlaterVideo = (state, id) => {
   return state.watchlater.filter(
-    (watchlater_video) => watchlater_video.id !== video.id
+    (watchlater_video_id) => watchlater_video_id !== id
   );
 };
 export const findPlayListVideo = (state, playlistName, video) => {
@@ -27,3 +27,10 @@ export const findPlayListVideo = (state, playlistName, video) => {
     (playlist_video) => playlist_video.id === video.id
   );
 };
+export const updateVideoIds = (playlist, id) => {
+  return playlist.videoIds.find((video_id) => id === video_id)
+    ? playlist.videoIds.filter((video_id) => id !== video_id)
+    : [...playlist.videoIds, id];
+};
+export const deleteVideoFromPlayList = (videoIds, id) =>
+  videoIds.filter((video_id) => id !== video_id);

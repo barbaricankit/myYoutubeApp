@@ -7,7 +7,7 @@ const CommentButton = ({ video }) => {
     <div className='stat'>
       <FontAwesomeIcon className='stat-icon' icon={faComment} />
       <span className='stat-count'>
-        {showView({ count: video.statistics.commentCount })}
+        {showView({ count: video?.statistics.commentCount })}
       </span>
     </div>
   );

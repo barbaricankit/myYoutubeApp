@@ -14,19 +14,19 @@ const CurrentVideo = ({ video, videoId }) => {
     <div className='video-height current-video'>
       <div className='youtube'>
         <span className='youtube-video'>
-          <YoutubeVideo video={video} videoId={videoId} />
+          <YoutubeVideo id={video?._id} videoId={videoId} />
         </span>
-        <h2 className='video-title'>{video.snippet.title}</h2>
+        <div className='video-title'>{video?.title}</div>
         <div className='current-video-details'>
           <div className='current-video-view-count'>
-            <TotalVideoViews viewCount={video.statistics.viewCount} />
-            <VideoUploadedDate uploadedDate={video.snippet.publishedAt} />
+            <TotalVideoViews viewCount={video?.statistics.viewCount} />
+            <VideoUploadedDate uploadedDate={video?.snippet.publishedAt} />
           </div>
           <VideoLikesDisLikesComments video={video} />
         </div>
         <hr />
         <div>
-          {playlistModal && <SaveVideo video={video} />}
+          {playlistModal && <SaveVideo id={video?._id} />}
           <ShowToast />
         </div>
       </div>

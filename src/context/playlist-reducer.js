@@ -18,16 +18,6 @@ export const manageModalState = (state, action) => {
         ...state,
         addtoPlaylist: action.value.flag,
         playlistSelected: action.value.playListName,
-        video: state.video && {
-          ...state.video,
-          playlists: state.video?.playlists.find(
-            (playlistName) => playlistName === action.value.playListName
-          )
-            ? state.video?.playlists?.filter(
-                (playlistName) => playlistName !== action.value.playListName
-              )
-            : [...state.video?.playlists, action.value.playListName],
-        },
       };
     case "SHOW_HIDE_NEW_PLAYLIST_INPUT_FIELD":
       return {

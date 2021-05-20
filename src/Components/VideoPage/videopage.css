@@ -65,7 +65,6 @@
   }
   .other-videos .cards .card .card-img {
     width: 50%;
-    height: 8rem;
   }
   .youtube {
     margin: 1rem 2rem 1rem 2rem;
@@ -86,6 +85,7 @@
     margin-top: 1rem;
   }
 }
+
 @media only screen and (max-width: 1099px) and (min-width: 900px) {
   .video-page {
     display: grid;
@@ -96,7 +96,7 @@
     grid-area: other;
   }
   .other-videos .cards {
-    margin-top: 4rem;
+    margin-top: 1rem;
   }
   .current-video {
     grid-area: current;
@@ -110,6 +110,17 @@
   .current-video {
     margin-top: 1rem;
     margin-left: 1rem;
+  }
+  .other-videos .horizontal-card-with-text {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .horizontal-card-with-text .video-card-detail {
+    width: 50%;
+  }
+  .other-videos .horizontal-card-with-text {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -164,6 +175,7 @@
   }
   .youtube-video {
     display: block;
+    margin-top: 0.5rem;
   }
   .current-video {
     margin: 0;

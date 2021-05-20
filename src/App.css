@@ -5,6 +5,7 @@
 @import "./Components/AddVideoToPlayList/playlist.css";
 @import "./Components/Navigation/nav.css";
 @import "./Components/Header/header.css";
+@import "./Components/Login/login.css";
 body {
   background-color: #f7f3f39f;
 }
@@ -20,16 +21,11 @@ h2 {
 }
 .content {
   height: 90%;
-  margin: 3.5rem 1rem;
+  margin: 3.5rem 0rem;
   margin-left: 15rem;
   overflow: auto;
 }
-.textbox {
-  padding-left: 0.5rem;
-  outline: none;
-  margin: 0;
-  border: none;
-}
+
 @media only screen and (min-width: 940px) {
   .main-content {
     display: grid;

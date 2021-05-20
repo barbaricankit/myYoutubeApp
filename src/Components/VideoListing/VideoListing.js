@@ -16,7 +16,6 @@ export const VideoListing = () => {
   } = usePlaylistModal();
   useEffect(() => {
     return () => {
-      dispatch({ type: "INITIAL_STATE" });
       modalDispatch({ type: "CLOSE_MODAL" });
     };
   }, [dispatch, modalDispatch]);
@@ -26,12 +25,14 @@ export const VideoListing = () => {
         {filteredVideos.map((video, index) => (
           <div className='video_link video' key={index}>
             <NavLink
-              to={`/video/${video.id}`}
+              to={`/video/${video.youtube_id}`}
               className='video_link'
               onClick={() => {
-                dispatch({ type: "PLAYVIDEO", value: video });
+                dispatch({ type: "PLAYVIDEO", value: video.youtube_id });
               }}>
-              <div key={video.id} className='card card-with-text card-text'>
+              <div
+                key={video.youtube_id}
+                className='card card-with-text card-text'>
                 <VideoImage video={video} />
 
                 <VideoCardDetails video={video} />
@@ -48,7 +49,7 @@ export const VideoListing = () => {
           </div>
         ))}
       </div>
-      {playlistModal && <SaveVideo video={video} />}
+      {playlistModal && <SaveVideo id={video._id} />}
       <ShowToast />
     </div>
   );

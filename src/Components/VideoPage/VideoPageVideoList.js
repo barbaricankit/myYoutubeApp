@@ -10,14 +10,14 @@ const VideoPageVideoList = () => {
       <div className='cards'>
         {filteredVideos.map((video, index) => (
           <NavLink
-            to={`/video/${video.id}`}
+            to={`/video/${video.youtube_id}`}
             className='video_link'
             key={index}
             onClick={() => {
-              dispatch({ type: "PLAYVIDEO", value: video });
+              dispatch({ type: "PLAYVIDEO", value: video.youtube_id });
             }}>
             <div
-              key={video.id}
+              key={video._id}
               className='card horizontal-card-with-text card-text'>
               <VideoImage video={video} />
 

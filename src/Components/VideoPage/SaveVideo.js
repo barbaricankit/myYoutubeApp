@@ -4,8 +4,11 @@ import AddToWatchLater from "../AddVideoToPlayList/AddToWatchLater";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import AddNewPlaylist from "../AddVideoToPlayList/NewPlaylist";
-const SaveVideo = ({ video }) => {
+import { usePlaylist } from "../../context/video-context";
+const SaveVideo = ({ id }) => {
   const { modalDispatch } = usePlaylistModal();
+  const { filteredVideos } = usePlaylist();
+  const video = filteredVideos.find(({ _id }) => _id === id);
   return (
     <div className='save_video_modal'>
       <div className='playlist_modal'>
@@ -20,7 +23,7 @@ const SaveVideo = ({ video }) => {
           </span>
         </div>
         <div>
-          <AddToWatchLater video={video} />
+          <AddToWatchLater id={video?._id} watchlater={video?.watchlater} />
         </div>
         <div>
           <PlaylistNameList video={video} />

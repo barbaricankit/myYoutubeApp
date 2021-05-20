@@ -6,7 +6,10 @@ import CommentButton from "../../Buttons/Comment";
 import TrashButton from "../../Buttons/Trash";
 
 const WatchLaterContent = () => {
-  const { state } = usePlaylist();
+  const {
+    state: { watchlater },
+    filteredVideos,
+  } = usePlaylist();
 
   return (
     <div className='library'>
@@ -14,25 +17,27 @@ const WatchLaterContent = () => {
         <div className='h1'>Watch Later</div>
       </div>
 
-      {state.watchlater.length > 0 &&
-        state.watchlater.map((video, index) => (
+      {watchlater.map((id, index) => {
+        const video = filteredVideos.find(({ _id }) => _id === id);
+        return (
           <div key={index} className='card horizontal-card-with-text card-text'>
             <CardImage video={video} />
             <div className='horizontal-card-details'>
-              <h3 className='card-text-title'>{video.snippet.title}</h3>
+              <div className='card-text-title'>{video.title}</div>
               <div className='stats'>
                 <LikeButton video={video} />
                 <DisLikeButton video={video} />
                 <CommentButton video={video} />
                 <TrashButton
                   type={"REMOVE_VIDEO_FROM_WATCH_LATER"}
-                  value={video}
+                  value={video._id}
                 />
               </div>
             </div>
           </div>
-        ))}
-      {state.watchlater.length === 0 && (
+        );
+      })}
+      {watchlater.length === 0 && (
         <div className='h4 empty-playlist'>Add Videos to watch later</div>
       )}
     </div>
