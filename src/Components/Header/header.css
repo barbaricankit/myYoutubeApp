@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap");
+
 .avatar-sm {
   width: 2.5rem;
   height: 2.5rem;
@@ -14,7 +16,8 @@
   font-size: larger;
 }
 .logo-text {
-  font-size: x-large;
+  font-size: xx-large;
+  font-family: "Yanone Kaffeesatz", sans-serif;
 }
 .logo {
   font-size: x-large;
@@ -24,8 +27,7 @@
 }
 .user-menu {
   display: block;
-  left: -89px;
-  top: 3.3rem;
+  top: 3.6rem;
   z-index: 0;
 }
 .single-letter-avatar {
@@ -41,7 +43,7 @@
     color: #2874f0;
   }
   .logo-text {
-    font-size: larger;
+    font-size: x-large;
   }
   .logo {
     font-size: larger;
