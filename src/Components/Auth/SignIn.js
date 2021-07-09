@@ -30,11 +30,11 @@ const SignIn = () => {
 		if (data.success) {
 			const {
 				userId,
-				likedvideos: likedVideos,
-				dislikedvideos: dislikedVideos,
+				likedVideos,
+				dislikedVideos,
 				playlists: playLists,
 				watchlater,
-				historyvideos: historyVideos,
+				historyVideos,
 				userInitials
 			} = data;
 			const serverData = {

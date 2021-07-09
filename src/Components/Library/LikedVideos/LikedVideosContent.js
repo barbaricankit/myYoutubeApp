@@ -20,12 +20,12 @@ const LikedVideosContent = () => {
     if (!likedVideos && userId) {
       (async () => {
         const {
-          data: { likedvideos },
+          data: { likedVideos },
         } = await callServer({
           url: `/${userId}/like`,
           type: "GET",
         });
-        dispatch({ type: "LOAD_LIKED_VIDEOS_DATA", value: likedvideos });
+        dispatch({ type: "LOAD_LIKED_VIDEOS_DATA", value: likedVideos });
       })();
     }
   }, [userId, dispatch, likedVideos]);

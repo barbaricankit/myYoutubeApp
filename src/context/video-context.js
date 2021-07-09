@@ -28,11 +28,11 @@ export const PlayListProvider = ({ children }) => {
         if (data) {
           const {
             userId,
-            likedvideos: likedVideos,
-            dislikedvideos: dislikedVideos,
+            likedVideos,
+            dislikedVideos,
             playlists: playLists,
             watchlater,
-            historyvideos: historyVideos,
+            historyVideos,
           } = data;
           const serverData = {
             userId,
