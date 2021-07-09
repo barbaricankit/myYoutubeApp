@@ -10,6 +10,7 @@ const CurrentVideo = ({ video, videoId }) => {
   const {
     modalState: { playlistModal },
   } = usePlaylistModal();
+ 
   return (
     <div className='video-height current-video'>
       <div className='youtube'>
@@ -26,7 +27,7 @@ const CurrentVideo = ({ video, videoId }) => {
         </div>
         <hr />
         <div>
-          {playlistModal && <SaveVideo id={video?._id} />}
+          {playlistModal && <SaveVideo video={video} />}
           <ShowToast />
         </div>
       </div>
