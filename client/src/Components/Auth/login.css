@@ -1,0 +1,56 @@
+.signin-form {
+	margin: 8rem 1rem 1rem;
+	border: 1px solid var(--btn-primary-color);
+	border-radius: 10px;
+}
+.textbox {
+	padding: 0.5rem 0.5rem;
+	border: none;
+	border-bottom: 1px solid;
+	font-size: large;
+	margin: var(--margin-width);
+	margin-top: 0;
+	width: 92%;
+}
+.signin-form .btn-primary {
+	margin: 1.5rem;
+}
+.signin-form p {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: large;
+}
+.password-textbox {
+	position: relative;
+}
+.password-textbox .btn-show-password {
+	position: absolute;
+	margin: 1.5rem;
+	right: 0.5rem;
+	bottom: 0;
+}
+@media only screen and (min-width: 650px) {
+	.signin-form {
+		margin: 8rem auto;
+		border: 1px solid var(--btn-primary-color);
+		border-radius: 10px;
+		width: 55%;
+	}
+	.password-textbox .btn-show-password {
+		position: absolute;
+		margin: 1.5rem;
+		right: 1.4rem;
+		bottom: 0;
+	}
+}
+@media only screen and (max-width: 330px) {
+	.password-textbox .btn-show-password {
+		right: 0.3rem;
+	}
+	.password-textbox .btn-show-password {
+		position: absolute;
+		margin: 1.5rem;
+		right: 0.4rem;
+		bottom: 0;
+	}
+}
