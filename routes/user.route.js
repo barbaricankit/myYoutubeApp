@@ -10,16 +10,16 @@ router.route('/:userId/user').get(checkUser, async (req, res) => {
 	const watchlater = await WatchLater.findOne({ userId: user._id });
 	const playlists = await Playlist.find({ userId: user._id });
 
-	const { _id: userId, likedvideos, dislikedvideos, historyvideos } = user;
+	const { _id: userId, likedVideos, dislikedVideos, historyVideos } = user;
 	res.json({
 		success: true,
 		message: 'Valid user',
 		userId,
-		likedvideos,
-		dislikedvideos,
+		likedVideos,
+		dislikedVideos,
 		playlists,
 		watchlater: watchlater ? watchlater : [],
-		historyvideos
+		historyVideos
 	});
 });
 router.route('/signin').post(async (req, res) => {
@@ -30,26 +30,26 @@ router.route('/signin').post(async (req, res) => {
 			const watchlater = await WatchLater.findOne({ userId: user._id });
 			const playlists = await Playlist.find({ userId: user._id });
 
-			const { _id: userId, likedvideos, dislikedvideos, historyvideos, firstname, lastname } = user;
+			const { _id: userId, likedVideos, dislikedVideos, historyVideos, firstname, lastname } = user;
 			const userInitials = firstname.substring(0, 1) + lastname.substring(0, 1);
 			res.json({
 				success: true,
 				message: 'Valid user',
 				userId,
 				userInitials,
-				likedvideos,
-				dislikedvideos,
+				likedVideos,
+				dislikedVideos,
 				playlists,
 				watchlater: watchlater ? watchlater : [],
-				historyvideos
+				historyVideos
 			});
 		} else {
 			res.json({
 				success: false,
-				message: 'InValid password'
+				message: 'Invalid password'
 			});
 		}
-	} else res.json({ success: false, message: 'InValid Username' });
+	} else res.json({ success: false, message: 'Invalid Username' });
 });
 
 router.route('/signup').post(async (req, res) => {

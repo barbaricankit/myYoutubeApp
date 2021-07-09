@@ -10,9 +10,9 @@ const userSchema = new Schema({
 	email: String,
 	username: String,
 	password: String,
-	likedvideos: [ { type: Schema.Types.ObjectId, ref: Video } ],
-	dislikedvideos: [ { type: Schema.Types.ObjectId, ref: Video } ],
-	historyvideos: [ { type: Schema.Types.ObjectId, ref: Video } ]
+	likedVideos: [ { type: Schema.Types.ObjectId, ref: Video } ],
+	dislikedVideos: [ { type: Schema.Types.ObjectId, ref: Video } ],
+	historyVideos: [ { type: Schema.Types.ObjectId, ref: Video } ]
 });
 
 const User = mongoose.model('User', userSchema);
