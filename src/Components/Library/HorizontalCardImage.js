@@ -11,7 +11,7 @@ export const CardImage = ({ video }) => {
           src={video?.thumbnails.medium.url}
           alt={video?.title}
           onClick={() => {
-            dispatch({ type: "PLAYVIDEO", value: video?.youtube_id });
+            dispatch({ type: "PLAY_VIDEO", value: video?.youtube_id });
           }}
         />
       </Link>

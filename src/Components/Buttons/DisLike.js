@@ -6,6 +6,7 @@ import { showView } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { callServer } from "../../API/api_call";
+
 const DisLikeButton = ({ video }) => {
   const { dispatch } = usePlaylist();
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const DisLikeButton = ({ video }) => {
         body: { videoId: video._id },
       });
       if (data.success) {
-        dispatch({ type: "DIS_LIKED_VIDEO", video_id: video._id });
+        dispatch({ type: "DISLIKED_VIDEO", video_id: video._id });
       } else {
         console.log("Something Went wrong, cannot disliked the video");
       }

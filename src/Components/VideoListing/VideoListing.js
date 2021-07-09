@@ -31,7 +31,7 @@ export const VideoListing = () => {
 							to={`/video/${video.youtube_id}`}
 							className='video_link'
 							onClick={() => {
-								dispatch({ type: 'PLAYVIDEO', value: video.youtube_id });
+								dispatch({ type: 'PLAY_VIDEO', value: video.youtube_id });
 							}}>
 							<div key={video.youtube_id} className='card card-with-text card-text'>
 								<VideoImage video={video} />

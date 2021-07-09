@@ -16,7 +16,7 @@ export const PlayListProvider = ({ children }) => {
   const videos = Object.assign(videoList);
   const { authState } = useAuth();
   useEffect(() => {
-    dispatch({ type: "SETVIDEOLIST", value: videos });
+    dispatch({ type: "SET_VIDEOLIST", value: videos });
   }, [videos]);
   useEffect(() => {
     if (authState?.userId) {
@@ -54,7 +54,7 @@ export const PlayListProvider = ({ children }) => {
     playLists: [],
     watchlater: [],
     likedVideos: [],
-    dislikeVideos: [],
+    dislikedVideos: [],
     showPlayListOptions: false,
     navPlaylistSelection: null,
     showNav: false,
@@ -84,7 +84,7 @@ export const PlayListProvider = ({ children }) => {
     }
   });
   filteredVideos.forEach((video) => {
-    const findvideo = state.dislikeVideos.find(
+    const findvideo = state.dislikedVideos.find(
       (videoId) => video._id === videoId
     );
     if (findvideo) {

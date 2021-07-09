@@ -6,6 +6,7 @@ import { showView } from "../utils";
 import { callServer } from "../../API/api_call";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
+
 const LikeButton = ({ video }) => {
   const { dispatch } = usePlaylist();
   const navigate = useNavigate();

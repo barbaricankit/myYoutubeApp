@@ -15,7 +15,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     if (!video) {
-      dispatch({ type: "PLAYVIDEO", value: videoId });
+      dispatch({ type: "PLAY_VIDEO", value: videoId });
     }
     return () => {
       modalDispatch({ type: "CLOSE_MODAL" });

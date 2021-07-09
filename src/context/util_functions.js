@@ -2,7 +2,7 @@ export const findLikedVideo = (state, id) => {
   return state.likedVideos.find((like_video_id) => like_video_id === id);
 };
 export const findDisLikeVideo = (state, id) => {
-  return state.dislikeVideos.find(
+  return state.dislikedVideos.find(
     (dislike_video_id) => dislike_video_id === id
   );
 };

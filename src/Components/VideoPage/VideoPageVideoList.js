@@ -14,7 +14,7 @@ const VideoPageVideoList = () => {
             className='video_link'
             key={index}
             onClick={() => {
-              dispatch({ type: "PLAYVIDEO", value: video.youtube_id });
+              dispatch({ type: "PLAY_VIDEO", value: video.youtube_id });
             }}>
             <div
               key={video._id}
