@@ -18,28 +18,19 @@ router.route('/:userId/user').get(checkUser, async (req, res) => {
 		likedvideos,
 		dislikedvideos,
 		playlists,
-		watchlater,
+		watchlater: watchlater ? watchlater : [],
 		historyvideos
 	});
 });
 router.route('/signin').post(async (req, res) => {
 	const { username, password } = req.body;
-	const findUser = await User.findOne({ username });
-	if (findUser) {
-		if (findUser.password === password) {
-			const populateWatchLater = await findUser.populate('watchlater').execPopulate();
-			const populatePlayList = await populateWatchLater.populate('playlists').execPopulate();
+	const user = await User.findOne({ username });
+	if (user) {
+		if (user.password === password) {
+			const watchlater = await WatchLater.findOne({ userId: user._id });
+			const playlists = await Playlist.find({ userId: user._id });
 
-			const {
-				_id: userId,
-				likedvideos,
-				dislikedvideos,
-				playlists,
-				watchlater,
-				historyvideos,
-				firstname,
-				lastname
-			} = populatePlayList;
+			const { _id: userId, likedvideos, dislikedvideos, historyvideos, firstname, lastname } = user;
 			const userInitials = firstname.substring(0, 1) + lastname.substring(0, 1);
 			res.json({
 				success: true,
@@ -49,7 +40,7 @@ router.route('/signin').post(async (req, res) => {
 				likedvideos,
 				dislikedvideos,
 				playlists,
-				watchlater,
+				watchlater: watchlater ? watchlater : [],
 				historyvideos
 			});
 		} else {
