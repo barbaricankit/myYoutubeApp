@@ -39,7 +39,7 @@ export const PlayListProvider = ({ children }) => {
             likedVideos,
             dislikedVideos,
             playLists,
-            watchlater: watchlater.videoIds,
+            watchlater: watchlater?.videoIds,
             historyVideos,
           };
           dispatch({ type: "UPDATE_INITIAL_STATE", value: serverData });

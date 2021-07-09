@@ -36,7 +36,7 @@ export const managePlaylistReducer = (state, action) => {
       return {
         ...state,
         playLists: playLists,
-        watchlater: watchlater,
+        watchlater: watchlater?watchlater:[],
         likedVideos: likedVideos,
         dislikeVideos: dislikedVideos,
         history: historyVideos,
