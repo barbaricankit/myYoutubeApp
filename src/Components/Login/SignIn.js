@@ -42,7 +42,7 @@ const SignIn = () => {
 				likedVideos,
 				dislikedVideos,
 				playLists,
-				watchlater: watchlater,
+				watchlater: watchlater?.videoIds,
 				historyVideos,
 				userInitials
 			};
