@@ -1,34 +1,27 @@
-import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-const dotenv = require("dotenv");
-dotenv.config();
+import { callServer } from "../API/api_call";
 const DataContext = createContext();
 
-const options = {
-  method: "GET",
-  url: process.env.REACT_APP_URL,
-};
 export const DataProvider = ({ children }) => {
   const [videoList, setVideoList] = useState([]);
   useEffect(() => {
     (async () => {
-      try {
-        const {
-          data: { items },
-        } = await axios.request(options);
+      const {
+        data: { videos },
+      } = await callServer({
+        url: "videos",
+        type: "GET",
+      });
 
-        setVideoList((prevList) =>
-          items.map((video) => ({
-            ...video,
-            playlists: [],
-            watchlater: false,
-            liked: false,
-            disliked: false,
-          }))
-        );
-      } catch (error) {
-        console.log(error);
-      }
+      setVideoList((prevList) =>
+        videos.map((video) => ({
+          ...video,
+          playlists: [],
+          watchlater: false,
+          liked: false,
+          disliked: false,
+        }))
+      );
     })();
   }, []);
   return (

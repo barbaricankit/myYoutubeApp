@@ -8,23 +8,25 @@ import YoutubeVideo from "./YoutubeVideo";
 import { useEffect } from "react";
 import { usePlaylistModal } from "../../context/playlist-context";
 const VideoPage = () => {
-  const { state, dispatch } = usePlaylist();
+  const { dispatch, current_play_video: video } = usePlaylist();
   const { modalDispatch } = usePlaylistModal();
 
   const { videoId } = useParams();
-  const video = state.videolist.find((video) => video.id === videoId);
+
   useEffect(() => {
+    if (!video) {
+      dispatch({ type: "PLAY_VIDEO", value: videoId });
+    }
     return () => {
-      dispatch({ type: "INITIAL_STATE" });
       modalDispatch({ type: "CLOSE_MODAL" });
     };
-  }, [dispatch, modalDispatch]);
+  }, [dispatch, modalDispatch, video, videoId]);
 
   return (
     <>
       <div className='video-page'>
         <span className='youtube-video-sm-screen'>
-          <YoutubeVideo video={video} videoId={videoId} />
+          <YoutubeVideo id={video?._id} videoId={videoId} />
         </span>
         <CurrentVideo video={video} videoId={videoId} />
         <div className='other-videos'>

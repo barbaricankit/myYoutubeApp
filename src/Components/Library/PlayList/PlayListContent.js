@@ -8,48 +8,78 @@ import { useParams } from "react-router-dom";
 import { usePlaylistModal } from "../../../context/playlist-context";
 import DeletePlayListModal from "./DeletePlaylistModal";
 import DeletePlaylistTrashButton from "../../Buttons/DeletePlaylistTrash";
+import { useEffect } from "react";
+import { callServer } from "../../../API/api_call";
+import { useAuth } from "../../../context/auth-context";
 
 const PlayListContent = ({ playlist }) => {
-  const { state } = usePlaylist();
+  const { state, dispatch, filteredVideos } = usePlaylist();
+  const {
+    authState: { userId },
+  } = useAuth();
   const { playlistname } = useParams();
   const {
     modalState: { deletePlayListModal },
   } = usePlaylistModal();
+
+  const current_playlist = playlistname ? playlistname : playlist.playlistName;
+
+  const PLAYLIST = state.playLists?.find(
+    (play_list) => play_list.playlistName === current_playlist
+  );
+  useEffect(() => {
+    if (!PLAYLIST && userId) {
+      (async () => {
+        const {
+          data: { playlists },
+        } = await callServer({
+          url: `/${userId}/${playlistname}`,
+          type: "GET",
+        });
+        dispatch({ type: "LOAD_PLAYLIST_DATA", value: playlists });
+      })();
+    }
+  }, [userId, dispatch, PLAYLIST, playlistname]);
   return (
     <div className='library'>
       <div className='heading'>
         <div className='h1'>
-          <div>{playlistname === undefined ? playlist : playlistname}</div>
+          <div>{current_playlist}</div>
           <DeletePlaylistTrashButton />
         </div>
       </div>
-      {state.playLists[playlistname === undefined ? playlist : playlistname]
-        .length === 0 && (
+      {PLAYLIST?.length === 0 && (
         <div className='h4 empty-playlist'>
           Add your favourite Videos into the
-          {playlistname === undefined ? playlist : playlistname} playlist
+          {current_playlist} playlist
         </div>
       )}
       <div>
-        {state.playLists[
-          playlistname === undefined ? playlist : playlistname
-        ].map((video, index) => (
-          <div key={index} className='card horizontal-card-with-text card-text'>
-            <CardImage video={video} />
-            <div className='horizontal-card-details'>
-              <h3 className='card-text-title'>{video.snippet.title}</h3>
-              <div className='stats'>
-                <LikeButton video={video} />
-                <DisLikeButton video={video} />
-                <CommentButton video={video} />
-                <TrashButton
-                  type={"REMOVE_VIDEO_FROM_PLAYLIST"}
-                  value={{ playlistName: playlistname, video: video }}
-                />
+        {PLAYLIST?.videoIds.map((id, index) => {
+          const video = filteredVideos.find(({ _id }) => _id === id);
+          return (
+            <div
+              key={index}
+              className='card horizontal-card-with-text card-text'>
+              <CardImage video={video} />
+              <div className='horizontal-card-details'>
+                <div className='card-text-title'>{video?.title}</div>
+                <div className='stats'>
+                  <LikeButton video={video} />
+                  <DisLikeButton video={video} />
+                  <CommentButton video={video} />
+                  <TrashButton
+                    type={"REMOVE_VIDEO_FROM_PLAYLIST"}
+                    value={{
+                      playlistName: current_playlist,
+                      video_id: id,
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         {deletePlayListModal && <DeletePlayListModal />}
       </div>
     </div>

@@ -2,7 +2,8 @@ import "../../App.css";
 import { faIndent } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePlaylistModal } from "../../context/playlist-context";
-const SaveButton = ({ video }) => {
+
+const SaveButton = () => {
   const { modalDispatch } = usePlaylistModal();
   return (
     <div

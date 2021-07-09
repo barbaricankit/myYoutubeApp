@@ -10,7 +10,7 @@ const VideoStats = ({ video }) => {
       <LikeButton video={video} />
       <DisLikeButton video={video} />
       <CommentButton video={video} />
-      <SaveButton video={video} />
+      <SaveButton />
     </div>
   );
 };

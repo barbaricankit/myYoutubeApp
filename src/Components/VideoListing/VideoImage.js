@@ -11,8 +11,8 @@ const VideoImage = ({ video }) => {
         className='card-img'
         src={
           screenSize > 675
-            ? video.snippet.thumbnails.medium.url
-            : video.snippet.thumbnails.standard.url
+            ? video.thumbnails.medium.url
+            : video.thumbnails.standard.url
         }
         alt='Not Found'
       />

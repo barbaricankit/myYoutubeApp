@@ -4,7 +4,7 @@ import VideoUploadedDate from "./VideoUploadedDate";
 const VideoCardDetails = ({ video }) => {
   return (
     <div className='video-card-detail'>
-      <h4 className='card-text-title video-title'>{video.snippet.title}</h4>
+      <div className='card-text-title video-title'>{video.title}</div>
 
       <div className='current-video-details'>
         <div className='current-video-view-count'>

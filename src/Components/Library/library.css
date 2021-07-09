@@ -5,6 +5,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.heading {
+  margin: 0;
+}
 .modal {
   position: fixed;
   top: 15rem;
@@ -113,7 +116,7 @@
 }
 @media only screen and (min-width: 1100px) {
   .library .horizontal-card-with-text {
-    width: 80%;
+    width: 90%;
     height: 200px;
     margin-left: 1rem;
     margin-top: 2rem;
@@ -128,7 +131,7 @@
 
 @media only screen and (max-width: 900px) and (min-width: 600px) {
   .library .horizontal-card-with-text {
-    width: 80%;
+    width: 90%;
     height: 200px;
     margin-left: 1rem;
     margin-top: 2rem;
@@ -136,7 +139,7 @@
 }
 @media only screen and (max-width: 1099px) and (min-width: 900px) {
   .library .horizontal-card-with-text {
-    width: 80%;
+    width: 90%;
     height: 200px;
     margin-left: 1rem;
     margin-top: 2rem;

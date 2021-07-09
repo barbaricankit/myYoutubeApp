@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap");
+
 .avatar-sm {
   width: 2.5rem;
   height: 2.5rem;
@@ -14,13 +16,22 @@
   font-size: larger;
 }
 .logo-text {
-  font-size: x-large;
+  font-size: xx-large;
+  font-family: "Yanone Kaffeesatz", sans-serif;
 }
 .logo {
   font-size: x-large;
 }
 .page_header {
   height: 3.5rem;
+}
+.user-menu {
+  display: block;
+  top: 3.6rem;
+  z-index: 0;
+}
+.single-letter-avatar {
+  padding: 0.5rem;
 }
 @media only screen and (max-width: 550px) {
   .avatar-sm {
@@ -32,7 +43,7 @@
     color: #2874f0;
   }
   .logo-text {
-    font-size: larger;
+    font-size: x-large;
   }
   .logo {
     font-size: larger;
