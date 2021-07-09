@@ -26,7 +26,7 @@ const SignIn = () => {
 			type: 'POST',
 			body: { username, password }
 		});
-		console.log({ data });
+	
 		if (data.success) {
 			const {
 				userId,
@@ -46,7 +46,7 @@ const SignIn = () => {
 				historyVideos,
 				userInitials
 			};
-			console.log('Entered');
+		
 			authDispatch({ type: 'SET_USER_ID', value: { userId, userInitials } });
 			dispatch({ type: 'UPDATE_INITIAL_STATE', value: serverData });
 			loginDispatch({ type: 'UPDATE_INCORRECT_PASSWORD', value: false });
