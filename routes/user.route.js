@@ -59,8 +59,8 @@ router.route('/signup').post(async (req, res) => {
 	if (findUser.username) {
 		res.json({ success: false, message: 'Username is already in use' });
 	} else {
-		const salt = bcrypt.genSalt(10);
-		const hashPassword = bcrypt.hash(password, salt);
+		const salt = await bcrypt.genSalt(10);
+		const hashPassword = await bcrypt.hash(password, salt);
 		const newuser = new User({
 			firstname,
 			lastname,
@@ -68,7 +68,7 @@ router.route('/signup').post(async (req, res) => {
 			username,
 			password: hashPassword
 		});
-		newuser.save();
+		await newuser.save();
 		const userInitials = firstname.substring(0, 1) + lastname.substring(0, 1);
 		res.json({ success: true, userId: newuser._id, userInitials });
 	}
