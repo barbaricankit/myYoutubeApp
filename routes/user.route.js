@@ -4,7 +4,7 @@ const { User } = require('../models/user.model');
 const { WatchLater } = require('../models/watchlater.model');
 const { checkUser } = require('../middleware/middlewares');
 const { Playlist } = require('../models/playlist.model');
-
+const bcrypt = require('bcrypt');
 router.route('/:userId/user').get(checkUser, async (req, res) => {
 	const user = req.user;
 	const watchlater = await WatchLater.findOne({ userId: user._id });
@@ -26,7 +26,8 @@ router.route('/signin').post(async (req, res) => {
 	const { username, password } = req.body;
 	const user = await User.findOne({ username });
 	if (user) {
-		if (user.password === password) {
+		const validPassword = await bcrypt.compare(password, user.password);
+		if (validPassword) {
 			const watchlater = await WatchLater.findOne({ userId: user._id });
 			const playlists = await Playlist.find({ userId: user._id });
 
@@ -58,12 +59,14 @@ router.route('/signup').post(async (req, res) => {
 	if (findUser.username) {
 		res.json({ success: false, message: 'Username is already in use' });
 	} else {
+		const salt = bcrypt.genSalt(10);
+		const hashPassword = bcrypt.hash(password, salt);
 		const newuser = new User({
 			firstname,
 			lastname,
 			email,
 			username,
-			password
+			password: hashPassword
 		});
 		newuser.save();
 		const userInitials = firstname.substring(0, 1) + lastname.substring(0, 1);
