@@ -26,6 +26,11 @@
   padding: 0.5rem;
   background: none;
 }
+.fa-spin {
+  text-align: center;
+  margin: 0 40vw;
+  margin-top: 5rem;
+}
 @media only screen and (min-width: 940px) {
   .video_link {
     margin: 0.5rem;
