@@ -27,10 +27,9 @@ export const VideoListing = () => {
       modalDispatch({ type: 'CLOSE_MODAL' })
     }
   }, [dispatch, modalDispatch, play_video])
-  console.log({ status })
   return (
     <div className="content">
-      {status === 'loading' && (
+      {(status === 'loading' || filteredVideos.length === 0) && (
         <FontAwesomeIcon
           icon={faCircleNotch}
           size="4x"
